@@ -1,4 +1,4 @@
-```markdown
+
 ## Pipeline Stages
 
 | Stage | Purpose | Input | Output |
@@ -7,4 +7,4 @@
 | Preprocess | Clean data | `iris_raw.csv` | `iris_preprocessed.csv` |
 | Feature Engineering | Create useful features | `iris_preprocessed.csv` | `iris_features.csv` |
 | Validate | Check schema, nulls and ranges | `iris_features.csv` | Validation result |
-```
+
