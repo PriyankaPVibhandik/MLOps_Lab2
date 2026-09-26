@@ -25,7 +25,7 @@ def preprocess(input_path: str, output_path: str) -> pd.DataFrame:
     df = df.drop_duplicates()
     logger.info("Dropped %d duplicate rows", initial_rows - len(df))
 
-    # Coerce numeric columns and impute missing values with column median
+    # Convert to numbers and fill missing values with the median
     for col in NUMERIC_COLS:
         df[col] = pd.to_numeric(df[col], errors="coerce")
         n_missing = df[col].isna().sum()
@@ -37,7 +37,7 @@ def preprocess(input_path: str, output_path: str) -> pd.DataFrame:
     # Drop rows with unresolvable missing target
     df = df.dropna(subset=["species"])
 
-    df.drop(columns=["collected_at"], inplace=True, errors="ignore")
+    df.drop(columns=["collected_at"], inplace=True, errors="ignore") # Remove collection timestamp. The timestamp was useful as collection metadata, but it isn't a model feature here.
     df.to_csv(output_path, index=False)
     logger.info("Preprocessed %d rows -> %s", len(df), output_path)
     return df
