@@ -17,8 +17,8 @@ def engineer_features(input_path: str, output_path: str) -> pd.DataFrame:
 
     # original features: sepal length, sepal width, petal length, petal width
     # creating new features
-    df["sepal_area"] = df["sepal length (cm)"] * df["sepal width (cm)"]  
-    df["petal_area"] = df["petal length (cm)"] * df["petal width (cm)"] 
+    df["sepal_area"] = df["sepal length (cm)"] * df["sepal width (cm)"]
+    df["petal_area"] = df["petal length (cm)"] * df["petal width (cm)"]
     df["sepal_to_petal_length_ratio"] = (
         df["sepal length (cm)"] / df["petal length (cm)"].replace(0, pd.NA)
     )
